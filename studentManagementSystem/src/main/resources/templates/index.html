@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student ManagementSystem</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="center my-2">
+		<h1>Student list</h1>
+		<a th:href="@{/showNewStudentForm}" class="btn-primary btn-sm mb-3">add Student</a>
+		<table  border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Student Name</th>
+					<th>Student Branch</th>
+					<th>Student Address</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student: ${listStudents}">
+					<td th:text="${student.Name}"></td>
+					<td th:text="${student.Branch}"></td>
+					<td th:text="${student.Address}"></td>
+					<td><a  th:href="@{/showFormForUpdate/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+						<a  th:href="@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
